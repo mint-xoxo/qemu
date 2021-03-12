@@ -57,7 +57,6 @@
 #include "block/block_int.h"
 #include "block/trace.h"
 #include "sysemu/arch_init.h"
-#include "sysemu/qtest.h"
 #include "sysemu/runstate.h"
 #include "sysemu/replay.h"
 #include "qemu/cutils.h"
@@ -1825,9 +1824,7 @@ static void drive_backup_prepare(BlkActionState *common, Error **errp)
     aio_context_acquire(aio_context);
 
     if (set_backing_hd) {
-        bdrv_set_backing_hd(target_bs, source, &local_err);
-        if (local_err) {
-            error_propagate(errp, local_err);
+        if (bdrv_set_backing_hd(target_bs, source, errp) < 0) {
             goto unref;
         }
     }

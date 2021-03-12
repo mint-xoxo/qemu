@@ -747,10 +747,17 @@ F: hw/misc/iotkit-sysctl.c
 F: include/hw/misc/iotkit-sysctl.h
 F: hw/misc/iotkit-sysinfo.c
 F: include/hw/misc/iotkit-sysinfo.h
+F: hw/misc/armsse-cpu-pwrctrl.c
+F: include/hw/misc/armsse-cpu-pwrctrl.h
 F: hw/misc/armsse-cpuid.c
 F: include/hw/misc/armsse-cpuid.h
 F: hw/misc/armsse-mhu.c
 F: include/hw/misc/armsse-mhu.h
+F: hw/timer/sse-counter.c
+F: include/hw/timer/sse-counter.h
+F: hw/timer/sse-timer.c
+F: include/hw/timer/sse-timer.h
+F: tests/qtest/sse-timer-test.c
 F: docs/system/arm/mps2.rst
 
 Musca
@@ -1862,7 +1869,7 @@ S: Odd Fixes
 F: hw/9pfs/
 X: hw/9pfs/xen-9p*
 F: fsdev/
-F: docs/interop/virtfs-proxy-helper.rst
+F: docs/tools/virtfs-proxy-helper.rst
 F: tests/qtest/virtio-9p-test.c
 T: git https://gitlab.com/gkurz/qemu.git 9p-next
 T: git https://github.com/cschoenebeck/qemu.git 9p.next
@@ -1893,7 +1900,7 @@ S: Supported
 F: tools/virtiofsd/*
 F: hw/virtio/vhost-user-fs*
 F: include/hw/virtio/vhost-user-fs.h
-F: docs/interop/virtiofsd.rst
+F: docs/tools/virtiofsd.rst
 
 virtio-input
 M: Gerd Hoffmann <kraxel@redhat.com>
@@ -2020,7 +2027,14 @@ M: Alistair Francis <alistair@alistair23.me>
 S: Maintained
 F: hw/core/generic-loader.c
 F: include/hw/core/generic-loader.h
-F: docs/generic-loader.txt
+F: docs/system/generic-loader.rst
+
+Guest Loader
+M: Alex Bennée <alex.bennee@linaro.org>
+S: Maintained
+F: hw/core/guest-loader.c
+F: docs/system/guest-loader.rst
+F: tests/acceptance/boot_xen.py
 
 Intel Hexadecimal Object File Loader
 M: Su Hang <suhang16@mails.ucas.ac.cn>
@@ -2200,7 +2214,7 @@ F: block/
 F: hw/block/
 F: include/block/
 F: qemu-img*
-F: docs/interop/qemu-img.rst
+F: docs/tools/qemu-img.rst
 F: qemu-io*
 F: tests/qemu-iotests/
 F: util/qemu-progress.c
@@ -2607,6 +2621,7 @@ S: Maintained
 F: softmmu/qtest.c
 F: accel/qtest/
 F: tests/qtest/
+F: docs/devel/qgraph.rst
 X: tests/qtest/bios-tables-test*
 
 Device Fuzzing
@@ -2656,7 +2671,7 @@ F: qapi/trace.json
 F: scripts/tracetool.py
 F: scripts/tracetool/
 F: scripts/qemu-trace-stap*
-F: docs/interop/qemu-trace-stap.rst
+F: docs/tools/qemu-trace-stap.rst
 F: docs/devel/tracing.txt
 T: git https://github.com/stefanha/qemu.git tracing
 
@@ -2902,9 +2917,12 @@ F: thunk.c
 F: accel/tcg/user-exec*.c
 
 BSD user
-S: Orphan
+M: Warner Losh <imp@bsdimp.com>
+R: Kyle Evans <kevans@freebsd.org>
+S: Maintained
 F: bsd-user/
 F: default-configs/targets/*-bsd-user.mak
+T: git https://github.com/qemu-bsd-user/qemu-bsd-user bsd-user-rebase-3.1
 
 Linux user
 M: Laurent Vivier <laurent@vivier.eu>
@@ -3039,6 +3057,7 @@ F: block/iscsi-opts.c
 
 Network Block Device (NBD)
 M: Eric Blake <eblake@redhat.com>
+M: Vladimir Sementsov-Ogievskiy <vsementsov@virtuozzo.com>
 L: qemu-block@nongnu.org
 S: Maintained
 F: block/nbd*
@@ -3047,8 +3066,9 @@ F: include/block/nbd*
 F: qemu-nbd.*
 F: blockdev-nbd.c
 F: docs/interop/nbd.txt
-F: docs/interop/qemu-nbd.rst
+F: docs/tools/qemu-nbd.rst
 T: git https://repo.or.cz/qemu/ericb.git nbd
+T: git https://src.openvz.org/scm/~vsementsov/qemu.git nbd
 
 NFS
 M: Peter Lieven <pl@kamp.de>
@@ -3242,8 +3262,8 @@ F: qapi/rdma.json
 Semihosting
 M: Alex Bennée <alex.bennee@linaro.org>
 S: Maintained
-F: hw/semihosting/
-F: include/hw/semihosting/
+F: semihosting/
+F: include/semihosting/
 
 Multi-process QEMU
 M: Elena Ufimtseva <elena.ufimtseva@oracle.com>

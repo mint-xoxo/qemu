@@ -21,7 +21,7 @@
 #include "exec/helper-proto.h"
 #include "exec/exec-all.h"
 #include "exec/cpu_ldst.h"
-#include "hw/semihosting/semihost.h"
+#include "semihosting/semihost.h"
 
 #if defined(CONFIG_USER_ONLY)
 
@@ -117,7 +117,7 @@ static const char *m68k_exception_name(int index)
     case EXCP_FORMAT:
         return "Format Error";
     case EXCP_UNINITIALIZED:
-        return "Unitialized Interruot";
+        return "Uninitialized Interrupt";
     case EXCP_SPURIOUS:
         return "Spurious Interrupt";
     case EXCP_INT_LEVEL_1:
